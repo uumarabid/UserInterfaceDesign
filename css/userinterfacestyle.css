@@ -1,0 +1,21 @@
+/* This technique is used to visually hide the skip link */ 
+header > a {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  /* This technique is used to reaveal the skip link */
+  header > a:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    color: #f9fafa;
+    background-color: #000000;
+  }
+
+  h2 {
+      text-align: center;
+  }
