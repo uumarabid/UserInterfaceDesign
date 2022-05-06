@@ -90,7 +90,6 @@
                   <input type="text" class="form-control" id="deplocation" placeholder="Enter departing city" />
                 </div>
               </div>
-              <div class="col-md-1 mt-2"></div>
               <div class="col-md-3 mt-2">
                 <div class="form-group">
                   <label for="deslocation">Destination</label>
@@ -104,7 +103,7 @@
                   <input type="date" class="form-control" id="depdate" placeholder="Departure date" />
                 </div>
               </div>
-              <div class="col-md-2 mt-2">
+              <div class="col-md-3 mt-2">
                 <div class="form-group">
                   <label for="retdate">Return date</label>
                   <input type="date" class="form-control" id="retdate" placeholder="Return date" />
@@ -114,25 +113,91 @@
                 <div class="col-md-3 mt-3">
                   <div class="form-group">
                     <label for="traveller">Travellers</label>
-                    <input type="date" class="form-control" id="traveller" placeholder="Travellers" />
+                    <!-- <input type="" class="form-control" id="traveller" placeholder="Travellers" /> -->
+                    <div class="input-group mb-3">
+                      <select onchange="AddTravellers()" class="form-select" id="travellersDropdown">
+                        <option value="0" selected>Choose...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                      </select>
+                    </div>
                   </div>
-
                 </div>
-                <div class="col-md-3 mt-3">
-
+                <div class="col-md-5 mt-5">
+                  <div class="form-group form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">Economy</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox2">First class</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                    <label class="form-check-label" for="inlineCheckbox3">Business class</label>
+                  </div>
                 </div>
-                <div class="col-md-3 mt-3">
-
+                <div class="col-md-3 mt-5">
+                  
                 </div>
-                <div class="col-md-3 mt-3">
-
-                </div>
-
               </div>
             </form>
           </div>
+          <div class="row">
+          <div class="col-md-12" id="travellerInfo">
+            
+          </div>
+          <button type="button" class="btn btn-primary btn-lg">Search flights</button>
+          </div>
+
         </div>
       </main>
     </div>
+    <script>
+      function AddTravellers(){
+        let travellersCount = parseInt(document.getElementById('travellersDropdown').value);
+        let html = `
+        <div class="col-md-12"><b> Traveller {travellerNumber} </b> <div>
+        <div class="row mb-3">
+          <div class="col-md-3">
+              <div class="form-group">
+                <label for="deplocation">First Name</label>
+                <input type="text" class="form-control" id="firstname" placeholder="First Name" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="deplocation">Last Name</label>
+                <input type="text" class="form-control" id="lastname" placeholder="Last Name" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="deplocation">Age</label>
+                <input type="number" class="form-control" id="age" placeholder="age" />
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="deplocation">Passport Number</label>
+                <input type="text" class="form-control" id="PassportNumber" placeholder="Passport Number" />
+              </div>
+            </div> </div>`;
+            document.getElementById('travellerInfo').innerHTML = '';
+            let renderHtml = '';
+            for(let i = 0; i < travellersCount; i++){
+              renderHtml += html.replace("{travellerNumber}", i+1);
+            }
+            document.getElementById('travellerInfo').innerHTML = renderHtml;
+
+        
+      }
+    </script>
   </body>
 </html>
